@@ -35,6 +35,19 @@ QA Agent: When you ask a question, this agent finds the relevant text in the dat
 
 Orchestrator: This connects everything. It handles the API requests and runs the heavy AI work in the background so the server doesn't freeze.
 
+## Docker Setup
+
+Run the app in a container without installing Python manually.
+
+1. Build the Image:
+```
+docker build -t doc-backend .
+```
+
+2. Run the Container:
+```
+docker run -p 8000:8000 --env-file .env doc-backend
+```
 ## Setup Instructions
 
 Clone the repo and set up Python:
