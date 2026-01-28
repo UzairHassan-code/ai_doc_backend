@@ -1,0 +1,6 @@
+pycache
+venv
+.git
+.env
+data/uploads/*
+data/vector_store/*

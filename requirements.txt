@@ -8,3 +8,5 @@ faiss-cpu
 pypdf               
 python-dotenv       
 requests
+langchain-huggingface
+sentence-transformers
