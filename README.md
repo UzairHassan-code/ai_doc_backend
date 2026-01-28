@@ -102,7 +102,4 @@ Improvement: In a real app, I would save files to DB and use a cloud vector data
 2. PDF Parsing
 
 I used a simple library (pypdf) that extracts text. It works well for digital PDFs but fails on scanned images.
-Improvement: I would add an OCR step (like Tesseract or Gemini Vision) to read text from images.
-Trade-off: I used a simple library (pypdf) that extracts text. It works well for digital PDFs but fails on scanned images.
-
-Improvement: I would add an OCR step (like Tesseract or Gemini Vision) to read text from images.
+Improvement: I would add an OCR step to read text from images.
