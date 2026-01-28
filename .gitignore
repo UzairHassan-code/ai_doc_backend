@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+env/
+data/uploads/*
+data/vector_store/*
+!data/uploads/.gitkeep
+!data/vector_store/.gitkeep
