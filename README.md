@@ -102,6 +102,7 @@ curl -X 'POST' \
   "question": "What is this document about?"
 }'
 
+# (You can use SwaggerUI for testing the APIs)
 
 ## Trade-offs and Improvements
 
