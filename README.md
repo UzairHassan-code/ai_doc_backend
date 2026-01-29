@@ -108,16 +108,9 @@ curl -X 'POST' \
 
 # (You can use SwaggerUI for testing the APIs)
 
-## Trade-offs and Improvements
-
-Here are a few decisions I made to keep things simple, and how I would improve them later:
+## Improvements
 
 1. Local Storage vs Cloud
 
 I am saving files and the database directly to the project folder. 
 Improvement: In a real app, I would save files to DB and use a cloud vector database like Pinecone.
-
-2. PDF Parsing
-
-I used a simple library (pypdf) that extracts text. It works well for digital PDFs but fails on scanned images.
-Improvement: I would add an OCR step to read text from images.
