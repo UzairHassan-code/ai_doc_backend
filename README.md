@@ -27,15 +27,15 @@ graph TD
 
 ## Agent Responsibilities
 
-Ingestion Agent: Its only job is to open the PDF file and pull out the text.
+1. Ingestion Agent: Its only job is to open the PDF file and pull out the text.
 
-Indexing Agent: It takes that text, chops it into small pieces, and turns it into numbers (vectors) using HuggingFace. It saves these to a local folder so we can search them later.
+2. Indexing Agent: It takes that text, chops it into small pieces, and turns it into numbers (vectors) using HuggingFace. It saves these to a local folder so we can search them later.
 
-QA Agent: When you ask a question, this agent finds the relevant text in the database and sends it to Google Gemini to write an answer.
+3. QA Agent: When you ask a question, this agent finds the relevant text in the database and sends it to Google Gemini to write an answer.
 
-Orchestrator: This connects everything. It handles the API requests and runs the heavy AI work in the background so the server doesn't freeze.
+4. Orchestrator: This connects everything. It handles the API requests and runs the heavy AI work in the background so the server doesn't freeze.
 
-## Docker Setup
+## Docker Setup(Preferred)
 
 Run the app in a container without installing Python manually.
 
@@ -48,6 +48,10 @@ docker build -t doc-backend .
 ```
 docker run -p 8000:8000 --env-file .env doc-backend
 ```
+3. Visit this URL:
+   ```
+   http://127.0.0.1:8000/docs
+   ```
 ## Setup Instructions
 
 Clone the repo and set up Python:
@@ -105,8 +109,6 @@ curl -X 'POST' \
 # (You can use SwaggerUI for testing the APIs)
 
 ## Improvements
-
-Here are a few decisions I made to keep things simple, and how I would improve them later:
 
 1. Local Storage vs Cloud
 
