@@ -9,16 +9,12 @@ from langchain_core.messages import HumanMessage
 from app.core.config import settings
 
 class IngestionAgent:
+
     """
     Agent responsible for reading raw files and extracting text.
     Capabilities:
-    1. PDF Text Extraction (Native pypdf)
-    2. Image OCR (via Gemini 1.5 Flash Vision)
     """
-    
     def __init__(self):
-        # We initialize a specific LLM instance for Vision tasks
-        # Temperature 0.0 makes it strictly extract text without being creative
         self.vision_llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash",
             google_api_key=settings.GOOGLE_API_KEY,
@@ -32,9 +28,7 @@ class IngestionAgent:
         path_obj = Path(file_path)
         
         if not path_obj.exists():
-            raise FileNotFoundError(f"File not found: {file_path}")
-            
-        # Guess the file type (e.g., 'image/png', 'application/pdf')
+            raise FileNotFoundError(f"File not found: {file_path}")     
         mime_type, _ = mimetypes.guess_type(file_path)
         
         # Strategy 1: Native PDF Text
@@ -58,21 +52,16 @@ class IngestionAgent:
                 if text:
                     text_content.append(text)
             
-            # If PDF has pages but 0 text, it might be a scanned PDF.
-            # In a production app, you would fallback to OCR here.
             return "\n".join(text_content)
         except Exception as e:
             return f"Error reading PDF: {str(e)}"
 
     def _perform_ocr(self, image_path: Path, mime_type: str) -> str:
-        """Uses Gemini Vision to read text from an image."""
         try:
             # 1. Read image bytes and encode to Base64
             with open(image_path, "rb") as image_file:
                 image_data = base64.b64encode(image_file.read()).decode("utf-8")
 
-            # 2. Construct Message for Gemini
-            # We send both the text instruction and the image data
             message = HumanMessage(
                 content=[
                     {"type": "text", "text": "Extract all the text from this image exactly as it appears. Do not summarize."},

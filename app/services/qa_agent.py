@@ -8,10 +8,8 @@ from app.core.config import settings
 from app.services.indexing_agent import IndexingAgent
 
 class QAAgent:
-    """
-    Agent responsible for answering questions using explicit LCEL pipes.
-    """
     
+    """Agent responsible for answering questions using explicit LCEL pipes."""
     def __init__(self):
         # Initialize Gemini Model
         self.llm = ChatGoogleGenerativeAI(
@@ -47,12 +45,6 @@ class QAAgent:
         """
         prompt = ChatPromptTemplate.from_template(template)
 
-        # 4. Build the Chain (The "Pipe" Syntax)
-        # This is the Raw LCEL. It says:
-        # "Take input. Send 'context' to retriever+formatter. Send 'question' through unchanged."
-        # "Then pass both to prompt."
-        # "Then pass prompt to Gemini."
-        # "Then make the output a string."
         rag_chain = (
             {"context": retriever | self._format_docs, "question": RunnablePassthrough()}
             | prompt
@@ -63,9 +55,6 @@ class QAAgent:
         # 5. Run it
         try:
             answer = rag_chain.invoke(question)
-            
-            # 6. Retrieve sources manually (since StrOutputParser only gives text)
-            # We do a quick separate fetch just to populate the UI 'sources' field
             source_docs = retriever.invoke(question)
             sources = [doc.page_content[:200] + "..." for doc in source_docs]
 

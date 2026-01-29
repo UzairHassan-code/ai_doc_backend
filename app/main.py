@@ -15,10 +15,9 @@ def create_application() -> FastAPI:
         description="A Multi-Agent Document Intelligence Backend"
     )
 
-    # CORS Middleware (Allows frontend to communicate if we build one later)
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],  # In production, specify domains
+        allow_origins=["*"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],

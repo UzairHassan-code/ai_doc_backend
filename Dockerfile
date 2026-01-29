@@ -1,4 +1,3 @@
-# Use a lightweight version of Python 3.10
 FROM python:3.10-slim
 
 WORKDIR /app
@@ -9,7 +8,6 @@ RUN pip install --default-timeout=1000 --no-cache-dir torch --index-url https://
 
 COPY requirements.txt .
 
-# Now install the rest (it will skip torch because it's already installed)
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .

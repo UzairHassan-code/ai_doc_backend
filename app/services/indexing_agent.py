@@ -3,7 +3,6 @@
 import os
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
-# This import requires: pip install langchain-huggingface
 from langchain_huggingface import HuggingFaceEmbeddings
 from app.core.config import settings
 
@@ -14,7 +13,6 @@ class IndexingAgent:
     2. Generating embeddings using a local HuggingFace model.
     3. Saving the vector index to disk.
     """
-    
     def __init__(self):
         print(f"Loading Embedding Model: {settings.EMBEDDING_MODEL_NAME}...")
         # Initialize the embedding model once (it loads into memory)
