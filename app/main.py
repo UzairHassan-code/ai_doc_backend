@@ -3,8 +3,12 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import langchain
+from langchain_community.cache import InMemoryCache
 from app.core.config import settings
 from app.api.routes import router
+
+langchain.llm_cache = InMemoryCache()
 
 def create_application() -> FastAPI:
     """Factory function to create the FastAPI application."""
