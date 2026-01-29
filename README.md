@@ -27,13 +27,13 @@ graph TD
 
 ## Agent Responsibilities
 
-Ingestion Agent: Its only job is to open the PDF file and pull out the text.
+1. Ingestion Agent: Its only job is to open the PDF file and pull out the text.
 
-Indexing Agent: It takes that text, chops it into small pieces, and turns it into numbers (vectors) using HuggingFace. It saves these to a local folder so we can search them later.
+2. Indexing Agent: It takes that text, chops it into small pieces, and turns it into numbers (vectors) using HuggingFace. It saves these to a local folder so we can search them later.
 
-QA Agent: When you ask a question, this agent finds the relevant text in the database and sends it to Google Gemini to write an answer.
+3. QA Agent: When you ask a question, this agent finds the relevant text in the database and sends it to Google Gemini to write an answer.
 
-Orchestrator: This connects everything. It handles the API requests and runs the heavy AI work in the background so the server doesn't freeze.
+4. Orchestrator: This connects everything. It handles the API requests and runs the heavy AI work in the background so the server doesn't freeze.
 
 ## Docker Setup
 
