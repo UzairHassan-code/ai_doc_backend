@@ -35,7 +35,7 @@ graph TD
 
 4. Orchestrator: This connects everything. It handles the API requests and runs the heavy AI work in the background so the server doesn't freeze.
 
-## Docker Setup
+## Docker Setup(Preferred)
 
 Run the app in a container without installing Python manually.
 
@@ -48,6 +48,10 @@ docker build -t doc-backend .
 ```
 docker run -p 8000:8000 --env-file .env doc-backend
 ```
+3. Visit this URL:
+   ```
+   http://127.0.0.1:8000/docs
+   ```
 ## Setup Instructions
 
 Clone the repo and set up Python:
